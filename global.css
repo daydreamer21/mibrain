@@ -1,0 +1,33 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+:root {
+  --font-azoft-sans: "Azoft Sans", sans-serif;
+  --font-big-shoulders-display: "Big Shoulders Display", sans-serif;
+  --font-dm-mono: "DM Mono", monospace;
+  --font-soledago: "Soledago", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: #000;
+  color: #fff;
+}

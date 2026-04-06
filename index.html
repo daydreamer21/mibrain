@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MIBRAIN DESIGN</title>
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" />
+  <style>
+    @font-face {
+      font-family: "Soledago";
+      src: url("./public/fonts/Soledago.ttf");
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: "Azoft Sans";
+      src: url("./public/fonts/azoft-sans.ttf");
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: "Azoft Sans";
+      src: url("./public/fonts/azoft-sans-bold.ttf");
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">MIBRAIN DESIGN</div>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">ABOUT US</a>
+      <a href="#portfolio" class="nav-link">PORTFOLIO</a>
+      <a href="#price" class="nav-link">PRICE</a>
+    </div>
+    <a href="#contact" class="nav-cta">get in touch →</a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-background">
+      <img src="./resource/mibrain-back.png" alt="" class="mibrain-bg" />
+    </div>
+    <div class="hero-content">
+      <div class="hero-text anim-fade-up">
+        <span>we can do</span>
+        <span>the best design</span>
+        <span>for your company</span>
+      </div>
+      <div class="hero-image anim-fade-up">
+        <img src="./resource/hero-photo.png" alt="MIBRAIN Design Studio" />
+      </div>
+    </div>
+    <a href="#about" class="scroll-arrow" aria-label="Scroll down">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </a>
+  </section>
+
+  <!-- ABOUT US -->
+  <section class="about" id="about">
+    <div class="section-header anim-fade-up">
+      <span class="section-num">[01]</span>
+      <h2 class="section-title">ABOUT US</h2>
+    </div>
+    <div class="about-content">
+      <p class="about-text anim-fade-right">— We are a completely new web design studio with our own way of looking at familiar things</p>
+      <div class="about-principle anim-fade-up">
+        <span class="principle-label">Our principle</span>
+        <img src="./resource/design-that-really-sells.png" alt="Design that really sells" class="principle-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="section-header anim-fade-up">
+      <span class="section-num">[02]</span>
+      <h2 class="section-title">PORTFOLIO</h2>
+    </div>
+    <div class="portfolio-slider">
+      <div class="portfolio-track" id="portfolioTrack">
+        <!-- Card 1 -->
+        <div class="portfolio-card">
+          <div class="card-visual">
+            <div class="card-category"><span>BRANDING</span></div>
+            <div class="card-media"></div>
+          </div>
+          <div class="card-info">
+            <h3 class="card-company">COMP NAME</h3>
+            <p class="card-desc">templatetemplatetemplate</p>
+          </div>
+        </div>
+        <!-- Card 2 (Main) -->
+        <div class="portfolio-card card-main">
+          <div class="card-visual">
+            <div class="card-category"><span>WEBSITE</span></div>
+            <div class="card-media"></div>
+          </div>
+          <div class="card-info card-info-center">
+            <h3 class="card-company-lg">COMPANY NAME</h3>
+            <p class="card-desc">corparate webside redesign</p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="portfolio-card">
+          <div class="card-visual">
+            <div class="card-category"><span>IDENTITY</span></div>
+            <div class="card-media"></div>
+          </div>
+          <div class="card-info">
+            <h3 class="card-company">COMP NAME</h3>
+            <p class="card-desc">templatetemplatetemplate</p>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-dots" id="portfolioDots">
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section class="price-section" id="price">
+    <div class="price-wrapper">
+      <!-- HEADER: [03] PRICE — над таблицей -->
+      <div class="section-header anim-fade-up">
+        <span class="section-num">[03]</span>
+        <h2 class="section-title">PRICE</h2>
+      </div>
+      <!-- BODY: категории слева + таблица + from $250 -->
+      <div class="price-body">
+        <div class="price-categories anim-fade-up">
+          <span class="price-cat">PRESENTATIONS</span>
+          <span class="price-cat">BRANDING</span>
+          <span class="price-cat">SITES</span>
+        </div>
+        <div class="price-table anim-fade-up">
+          <div class="price-row">
+            <div class="price-row-info">
+              <h3 class="price-name">LANDING PAGE</h3>
+              <span class="price-amount">$500</span>
+            </div>
+            <p class="price-desc">one-page website, responsive, animations</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-info">
+              <h3 class="price-name">CORPORATE SITE</h3>
+              <span class="price-amount">$1 200</span>
+            </div>
+            <p class="price-desc">multi-page, CMS integration, SEO-ready</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-info">
+              <h3 class="price-name">BRAND IDENTITY</h3>
+              <span class="price-amount">$800</span>
+            </div>
+            <p class="price-desc">logo, guidelines, typography, color system</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-info">
+              <h3 class="price-name">PITCH DECK</h3>
+              <span class="price-amount">$350</span>
+            </div>
+            <p class="price-desc">up to 15 slides, custom graphics</p>
+          </div>
+          <div class="price-row">
+            <div class="price-row-info">
+              <h3 class="price-name">SOCIAL MEDIA KIT</h3>
+              <span class="price-amount">$250</span>
+            </div>
+            <p class="price-desc">templates, covers, stories, highlights</p>
+          </div>
+        </div>
+        <div class="price-from anim-fade-left">
+          <span class="from-label">from</span>
+          <span class="from-amount">$250</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section class="contact" id="contact">
+    <div class="contact-wrapper">
+      <h2 class="contact-title anim-fade-up">start<br />project</h2>
+      <form class="contact-form" id="contactForm">
+        <div class="form-group anim-fade-up">
+          <label class="form-label">Company name</label>
+          <input type="text" class="form-input" placeholder="your company name" required />
+        </div>
+        <div class="form-group anim-fade-up">
+          <label class="form-label">and i want to</label>
+          <input type="text" class="form-input" placeholder="redesign my website, build a pitch-deck..." />
+        </div>
+        <div class="form-group anim-fade-up">
+          <label class="form-label">reach me at</label>
+          <input type="email" class="form-input" placeholder="email@example.com" required />
+        </div>
+        <div class="form-submit anim-fade-up">
+          <button type="submit" class="submit-btn">send inquiry</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <section class="footer" id="footer">
+    <div class="footer-question anim-fade-up">
+      <h2>do you have<br />any questions?</h2>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-art">
+        <img src="./resource/footer.png" alt="" class="footer-art-img" />
+      </div>
+      <div class="footer-right">
+        <div class="footer-socials">
+          <a href="#" class="social-link">TG</a>
+          <a href="#" class="social-link">VK</a>
+          <a href="#" class="social-link">TT</a>
+          <a href="#" class="social-link">BH</a>
+          <a href="#" class="social-link">DP</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>mibrain agency copyright 2026</p>
+    </div>
+  </section>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal">
+      <h3>Thank you!</h3>
+      <p>We'll get back to you soon.</p>
+      <button class="modal-close" id="modalClose">OK</button>
+    </div>
+  </div>
+
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile menu
+          document.body.classList.remove('menu-open');
+        }
+      });
+    });
+
+    // Burger menu
+    const burger = document.getElementById('burger');
+    burger.addEventListener('click', () => {
+      document.body.classList.toggle('menu-open');
+    });
+
+    // Navbar background on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Scroll animations (IntersectionObserver)
+    const animElements = document.querySelectorAll('.anim-fade-up, .anim-fade-right, .anim-fade-left');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    animElements.forEach(el => observer.observe(el));
+
+    // Portfolio Carousel
+    const dots = document.querySelectorAll('.dot');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+    const track = document.getElementById('portfolioTrack');
+    const CARD_GAP = 36;
+    let currentPortfolioIndex = 1;
+
+    function getCardSizes() {
+      const w = window.innerWidth;
+      if (w <= 480) return { normal: 240, main: 360 };
+      if (w <= 768) return { normal: 280, main: 420 };
+      if (w <= 1400) return { normal: 380, main: 640 };
+      return { normal: 480, main: 800 };
+    }
+
+    function calcTranslate(mainIdx) {
+      const sliderEl = document.querySelector('.portfolio-slider');
+      const sliderW = sliderEl ? sliderEl.offsetWidth : window.innerWidth;
+      const { normal, main } = getCardSizes();
+      const widths = Array.from(portfolioCards).map((_, i) => i === mainIdx ? main : normal);
+      let offsetLeft = 0;
+      for (let i = 0; i < mainIdx; i++) offsetLeft += widths[i] + CARD_GAP;
+      const cardCenter = offsetLeft + widths[mainIdx] / 2;
+      return sliderW / 2 - cardCenter;
+    }
+
+    function setActivePortfolio(index, animate) {
+      currentPortfolioIndex = index;
+      dots.forEach(d => d.classList.remove('active'));
+      portfolioCards.forEach(c => c.classList.remove('card-main'));
+      if (dots[index]) dots[index].classList.add('active');
+      if (portfolioCards[index]) portfolioCards[index].classList.add('card-main');
+
+      const tx = calcTranslate(index);
+      if (animate === false) {
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${tx}px)`;
+        requestAnimationFrame(() => requestAnimationFrame(() => { track.style.transition = ''; }));
+      } else {
+        track.style.transform = `translateX(${tx}px)`;
+      }
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => setActivePortfolio(i, true)));
+    window.addEventListener('load', () => setActivePortfolio(1, false));
+    window.addEventListener('resize', () => setActivePortfolio(currentPortfolioIndex, false));
+
+    // Form submission
+    const form = document.getElementById('contactForm');
+    const modal = document.getElementById('successModal');
+    const modalClose = document.getElementById('modalClose');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      // Animate button
+      const btn = form.querySelector('.submit-btn');
+      btn.textContent = 'sending...';
+      btn.disabled = true;
+      setTimeout(() => {
+        modal.classList.add('show');
+        form.reset();
+        btn.textContent = 'send inquiry';
+        btn.disabled = false;
+      }, 1000);
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('show');
+    });
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.classList.remove('show');
+    });
+
+    // Parallax on hero background
+    window.addEventListener('scroll', () => {
+      const hero = document.getElementById('hero');
+      const bg = hero.querySelector('.mibrain-bg');
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        bg.style.transform = `translateY(${scrolled * 0.15}px)`;
+      }
+    });
+  </script>
+</body>
+</html>
