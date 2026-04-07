@@ -333,6 +333,7 @@
 .price-section {
   padding: 80px 0;
   position: relative;
+  overflow: hidden;
 }
 .price-section::before {
   content: '';
@@ -861,10 +862,10 @@
   .contact-form { max-width: 100%; }
   .footer-question h2 { font-size: 34px; }
   .footer-question { padding: 0 24px 30px; max-width: none; }
-  .footer-bottom { aspect-ratio: 1 / 1; }
-  .footer-right { right: 16px; bottom: 16px; top: auto; transform: none; }
-  .footer-socials { flex-direction: row; flex-wrap: wrap; gap: 10px; }
-  .social-link { font-size: 18px; }
+  .footer-bottom { aspect-ratio: 3 / 2; }
+  .footer-socials { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+  .footer-right { right: 16px; bottom: 16px; }
+  .social-link { font-size: 20px; }
   .portfolio-dots { padding-right: 0; }
 }
 
@@ -886,9 +887,6 @@
   .submit-btn { font-size: 22px; width: 100%; }
   .footer-question h2 { font-size: 26px; }
   .card-company-lg { font-size: 30px; }
-  .footer-bottom { aspect-ratio: 4 / 5; }
-  .footer-art-img { object-position: center center; }
-  .footer-right { right: 16px; bottom: 24px; }
-  .social-link { font-size: 16px; background: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 2px; }
+  .footer-right { right: 16px; bottom: 16px; }
   .menu-open .nav-links .nav-link { font-size: 28px; }
 }
