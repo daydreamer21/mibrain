@@ -338,6 +338,57 @@
     window.addEventListener('load', () => setActivePortfolio(1, false));
     window.addEventListener('resize', () => setActivePortfolio(currentPortfolioIndex, false));
 
+    // Swipe / drag support for portfolio
+    (() => {
+      const slider = document.querySelector('.portfolio-slider');
+      let startX = 0, startY = 0, dragging = false, moved = false;
+      const THRESHOLD = 50;
+
+      function onStart(e) {
+        dragging = true;
+        moved = false;
+        startX = e.touches ? e.touches[0].clientX : e.clientX;
+        startY = e.touches ? e.touches[0].clientY : e.clientY;
+        track.style.transition = 'none';
+      }
+      function onMove(e) {
+        if (!dragging) return;
+        const x = e.touches ? e.touches[0].clientX : e.clientX;
+        const y = e.touches ? e.touches[0].clientY : e.clientY;
+        const dx = x - startX;
+        const dy = y - startY;
+        if (Math.abs(dx) > 10) moved = true;
+        // Only prevent default if horizontal swipe is dominant
+        if (Math.abs(dx) > Math.abs(dy) && moved) {
+          e.preventDefault();
+          const base = calcTranslate(currentPortfolioIndex);
+          track.style.transform = `translateX(${base + dx}px)`;
+        }
+      }
+      function onEnd(e) {
+        if (!dragging) return;
+        dragging = false;
+        track.style.transition = '';
+        const endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+        const dx = endX - startX;
+        if (dx < -THRESHOLD && currentPortfolioIndex < portfolioCards.length - 1) {
+          setActivePortfolio(currentPortfolioIndex + 1, true);
+        } else if (dx > THRESHOLD && currentPortfolioIndex > 0) {
+          setActivePortfolio(currentPortfolioIndex - 1, true);
+        } else {
+          setActivePortfolio(currentPortfolioIndex, true);
+        }
+      }
+
+      slider.addEventListener('touchstart', onStart, { passive: true });
+      slider.addEventListener('touchmove', onMove, { passive: false });
+      slider.addEventListener('touchend', onEnd);
+      slider.addEventListener('mousedown', onStart);
+      slider.addEventListener('mousemove', onMove);
+      slider.addEventListener('mouseup', onEnd);
+      slider.addEventListener('mouseleave', () => { if (dragging) onEnd({ clientX: startX }); });
+    })();
+
     // Form submission
     const form = document.getElementById('contactForm');
     const modal = document.getElementById('successModal');

@@ -234,6 +234,11 @@
   gap: 36px;
   will-change: transform;
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: grab;
+  user-select: none;
+}
+.portfolio-track:active {
+  cursor: grabbing;
 }
 
 .portfolio-card {
@@ -849,6 +854,8 @@
   .portfolio .section-header { padding: 0 24px; }
   .portfolio-card { width: 280px; }
   .portfolio-card.card-main { width: 420px; }
+  .portfolio-slider { height: 420px; }
+  .portfolio-dots { bottom: 10px; }
   .price-section { padding: 50px 0; }
   .price-wrapper { padding: 0 24px; }
   .price-name, .price-amount { font-size: 30px; }
@@ -876,6 +883,8 @@
   .hero-background { width: 250px; right: -30px; }
   .portfolio-card { width: 240px; }
   .portfolio-card.card-main { width: 360px; }
+  .portfolio-slider { height: 360px; }
+  .portfolio-dots { bottom: 8px; }
   .section-title { font-size: 36px; }
   .about-text { font-size: 18px; }
   .principle-img { width: 100%; }
