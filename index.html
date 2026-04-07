@@ -35,6 +35,7 @@
       <a href="#about" class="nav-link">ABOUT US</a>
       <a href="#portfolio" class="nav-link">PORTFOLIO</a>
       <a href="#price" class="nav-link">PRICE</a>
+      <a href="#contact" class="nav-link nav-link-cta">GET IN TOUCH</a>
     </div>
     <a href="#contact" class="nav-cta">get in touch →</a>
     <button class="burger" id="burger" aria-label="Menu">
@@ -191,18 +192,26 @@
   <section class="contact" id="contact">
     <div class="contact-wrapper">
       <h2 class="contact-title anim-fade-up">start<br />project</h2>
-      <form class="contact-form" id="contactForm">
+      <form class="contact-form" id="contactForm" novalidate>
         <div class="form-group anim-fade-up">
           <label class="form-label">Company name</label>
-          <input type="text" class="form-input" placeholder="your company name" required />
+          <div class="form-field">
+            <input type="text" class="form-input" placeholder="your company name" data-required />
+            <span class="form-error">— required</span>
+          </div>
         </div>
         <div class="form-group anim-fade-up">
           <label class="form-label">and i want to</label>
-          <input type="text" class="form-input" placeholder="redesign my website, build a pitch-deck..." />
+          <div class="form-field">
+            <input type="text" class="form-input" placeholder="redesign my website, build a pitch-deck..." />
+          </div>
         </div>
         <div class="form-group anim-fade-up">
           <label class="form-label">reach me at</label>
-          <input type="email" class="form-input" placeholder="email@example.com" required />
+          <div class="form-field">
+            <input type="email" class="form-input" placeholder="email@example.com" data-required data-email />
+            <span class="form-error">— required</span>
+          </div>
         </div>
         <div class="form-submit anim-fade-up">
           <button type="submit" class="submit-btn">send inquiry</button>
@@ -334,9 +343,28 @@
     const modal = document.getElementById('successModal');
     const modalClose = document.getElementById('modalClose');
 
+    form.querySelectorAll('[data-required]').forEach(input => {
+      input.addEventListener('input', () => {
+        input.closest('.form-field').classList.remove('has-error');
+      });
+    });
+
     form.addEventListener('submit', e => {
       e.preventDefault();
-      // Animate button
+      let valid = true;
+      form.querySelectorAll('[data-required]').forEach(input => {
+        const field = input.closest('.form-field');
+        const isEmpty = !input.value.trim();
+        const isInvalidEmail = input.hasAttribute('data-email') && input.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+        if (isEmpty || isInvalidEmail) {
+          field.classList.add('has-error');
+          field.querySelector('.form-error').textContent = isInvalidEmail ? '— invalid email' : '— required';
+          valid = false;
+        } else {
+          field.classList.remove('has-error');
+        }
+      });
+      if (!valid) return;
       const btn = form.querySelector('.submit-btn');
       btn.textContent = 'sending...';
       btn.disabled = true;

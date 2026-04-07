@@ -513,6 +513,30 @@
 .form-input:focus {
   border-bottom-color: #555;
 }
+.form-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 650px;
+}
+.form-error {
+  font-family: var(--font-dm-mono);
+  font-size: 12px;
+  color: #000;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+.form-field.has-error .form-input {
+  border-bottom-color: #000;
+}
+.form-field.has-error .form-error {
+  opacity: 1;
+  transform: translateY(0);
+}
 .form-submit {
   display: flex;
   justify-content: center;
@@ -703,6 +727,11 @@
 }
 
 /* ==================== MOBILE MENU ==================== */
+.menu-open .navbar {
+  backdrop-filter: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
 .menu-open .nav-links,
 .menu-open .nav-cta {
   display: flex !important;
@@ -717,15 +746,27 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   z-index: 99;
 }
+.nav-link-cta {
+  display: none !important;
+}
+.menu-open .nav-links .nav-link {
+  font-size: 32px;
+  padding: 14px 24px;
+}
+.menu-open .nav-links .nav-link-cta {
+  display: inline-block !important;
+  margin-top: 30px;
+  font-size: 18px;
+  background: #000;
+  color: #fff !important;
+  padding: 16px 50px;
+  border-radius: 0;
+}
 .menu-open .nav-cta {
-  position: fixed;
-  bottom: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
+  display: none !important;
 }
 .menu-open .burger span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 6px);
@@ -795,8 +836,8 @@
   .navbar { padding: 20px 24px; }
   .navbar.scrolled { padding: 14px 24px; }
   .nav-logo { font-size: 28px; }
-  .hero { padding: 90px 20px 40px; }
-  .hero-content { padding-top: 70px; }
+  .hero { padding: 80px 20px 40px; }
+  .hero-content { padding-top: 30px; gap: 12px; }
   .hero-text { font-size: 20px; }
   .about { padding: 60px 0 50px; }
   .about .section-header { padding: 0 24px; }
@@ -815,19 +856,23 @@
   .contact-title { font-size: 60px; }
   .form-group { flex-direction: column; gap: 8px; }
   .form-label { font-size: 26px; min-width: auto; }
-  .form-input { max-width: 100%; font-size: 18px; }
+  .form-field { max-width: 100%; width: 100%; }
+  .form-input { max-width: 100%; font-size: 18px; width: 100%; }
+  .contact-form { max-width: 100%; }
   .footer-question h2 { font-size: 34px; }
   .footer-question { padding: 0 24px 30px; max-width: none; }
-  .footer-bottom { aspect-ratio: 3 / 2; }
-  .footer-socials { flex-direction: row; flex-wrap: wrap; gap: 8px; }
-  .footer-right { right: 16px; bottom: 16px; }
-  .social-link { font-size: 20px; }
+  .footer-bottom { aspect-ratio: 1 / 1; }
+  .footer-right { right: 16px; bottom: 16px; top: auto; transform: none; }
+  .footer-socials { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+  .social-link { font-size: 18px; }
   .portfolio-dots { padding-right: 0; }
 }
 
 @media (max-width: 480px) {
-  .hero-content { padding-top: 60px; }
+  .hero { padding: 70px 20px 30px; min-height: auto; }
+  .hero-content { padding-top: 20px; gap: 10px; }
   .hero-text { font-size: 17px; }
+  .hero-background { width: 250px; right: -30px; }
   .portfolio-card { width: 240px; }
   .portfolio-card.card-main { width: 360px; }
   .section-title { font-size: 36px; }
@@ -835,9 +880,15 @@
   .principle-img { width: 100%; }
   .price-name, .price-amount { font-size: 24px; }
   .price-table { padding: 24px 20px; }
-  .contact-title { font-size: 44px; }
+  .contact { padding: 50px 0; }
+  .contact-title { font-size: 44px; margin-bottom: 40px; }
   .form-label { font-size: 22px; }
   .submit-btn { font-size: 22px; width: 100%; }
   .footer-question h2 { font-size: 26px; }
   .card-company-lg { font-size: 30px; }
+  .footer-bottom { aspect-ratio: 4 / 5; }
+  .footer-art-img { object-position: center center; }
+  .footer-right { right: 16px; bottom: 24px; }
+  .social-link { font-size: 16px; background: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 2px; }
+  .menu-open .nav-links .nav-link { font-size: 28px; }
 }
