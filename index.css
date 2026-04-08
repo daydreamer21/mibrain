@@ -106,7 +106,7 @@
   padding-top: 90px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
 }
 .hero-text {
   text-align: right;
@@ -117,10 +117,15 @@
   z-index: 5;
   display: flex;
   flex-direction: column;
+  margin-bottom: 0;
+}
+.hero-text-last {
+  line-height: 1;
 }
 .hero-image {
   width: 100%;
   overflow: hidden;
+  margin-top: -5px;
 }
 .hero-image img {
   width: 100%;
@@ -161,7 +166,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 100px;
 }
 .section-header {
   display: flex;
@@ -392,6 +397,18 @@
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   white-space: nowrap;
+}
+.price-amount-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.price-per {
+  font-family: var(--font-dm-mono);
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.05em;
 }
 .price-row {
   padding: 18px 0;
@@ -636,7 +653,7 @@
 }
 .footer-copy {
   background: #000;
-  padding: 16px 50px;
+  padding: 0 0;
 }
 .footer-copy p {
   font-family: var(--font-azoft-sans);
@@ -899,6 +916,7 @@
   .card-company-lg { font-size: 30px; }
   .footer-right { right: 16px; bottom: 16px; }
   .footer { padding-bottom: 0; }
-  .footer-copy { margin-bottom: 0; padding-bottom: 24px; }
+  .footer-copy { margin-bottom: 0; padding-bottom: 0; }
   .menu-open .nav-links .nav-link { font-size: 28px; }
+  .price-desc { font-size: 11px; margin-top: 2px; }
 }
