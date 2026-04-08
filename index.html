@@ -245,6 +245,27 @@
     </div>
   </section>
 
+  <!-- Portfolio Lightbox -->
+  <div class="lightbox" id="portfolioLightbox">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <div class="lightbox-counter"><span id="lightboxCurrent">1</span> / <span id="lightboxTotal">3</span></div>
+    <div class="lightbox-content">
+      <div class="lightbox-media" id="lightboxMedia"></div>
+      <div class="lightbox-info">
+        <span class="lightbox-category" id="lightboxCategory"></span>
+        <h3 class="lightbox-title" id="lightboxTitle"></h3>
+        <p class="lightbox-desc" id="lightboxDesc"></p>
+      </div>
+    </div>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <div class="lightbox-hint">scroll to navigate</div>
+  </div>
+
   <!-- Success Modal -->
   <div class="modal-overlay" id="successModal">
     <div class="modal">
@@ -340,6 +361,7 @@
     window.addEventListener('resize', () => setActivePortfolio(currentPortfolioIndex, false));
 
     // Swipe / drag support for portfolio
+    let portfolioDragged = false;
     (() => {
       const slider = document.querySelector('.portfolio-slider');
       let startX = 0, startY = 0, dragging = false, moved = false;
@@ -348,6 +370,7 @@
       function onStart(e) {
         dragging = true;
         moved = false;
+        portfolioDragged = false;
         startX = e.touches ? e.touches[0].clientX : e.clientX;
         startY = e.touches ? e.touches[0].clientY : e.clientY;
         track.style.transition = 'none';
@@ -358,7 +381,7 @@
         const y = e.touches ? e.touches[0].clientY : e.clientY;
         const dx = x - startX;
         const dy = y - startY;
-        if (Math.abs(dx) > 10) moved = true;
+        if (Math.abs(dx) > 10) { moved = true; portfolioDragged = true; }
         // Only prevent default if horizontal swipe is dominant
         if (Math.abs(dx) > Math.abs(dy) && moved) {
           e.preventDefault();
@@ -444,6 +467,115 @@
         bg.style.transform = `translateY(${scrolled * 0.15}px)`;
       }
     });
+
+    // Portfolio Lightbox
+    (() => {
+      const lightbox = document.getElementById('portfolioLightbox');
+      const content = lightbox.querySelector('.lightbox-content');
+      const lbMedia = document.getElementById('lightboxMedia');
+      const lbCategory = document.getElementById('lightboxCategory');
+      const lbTitle = document.getElementById('lightboxTitle');
+      const lbDesc = document.getElementById('lightboxDesc');
+      const lbCurrent = document.getElementById('lightboxCurrent');
+      const lbTotal = document.getElementById('lightboxTotal');
+      const cards = Array.from(document.querySelectorAll('.portfolio-card'));
+      let lbIndex = 0;
+      let wheelLock = false;
+
+      lbTotal.textContent = cards.length;
+
+      function getCardData(card) {
+        const cat = card.querySelector('.card-category span');
+        const title = card.querySelector('.card-company, .card-company-lg');
+        const desc = card.querySelector('.card-desc');
+        const media = card.querySelector('.card-media');
+        return {
+          category: cat ? cat.textContent : '',
+          title: title ? title.textContent : '',
+          desc: desc ? desc.textContent : '',
+          bg: media ? getComputedStyle(media).background : '#111'
+        };
+      }
+
+      function showSlide(index, animate) {
+        lbIndex = index;
+        lbCurrent.textContent = index + 1;
+        if (animate) {
+          content.classList.add('switching');
+          setTimeout(() => {
+            applyData(index);
+            content.classList.remove('switching');
+          }, 200);
+        } else {
+          applyData(index);
+        }
+      }
+
+      function applyData(index) {
+        const data = getCardData(cards[index]);
+        lbCategory.textContent = data.category;
+        lbTitle.textContent = data.title;
+        lbDesc.textContent = data.desc;
+        lbMedia.style.background = data.bg;
+      }
+
+      function openLightbox(index) {
+        showSlide(index, false);
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function nextSlide() {
+        if (lbIndex < cards.length - 1) showSlide(lbIndex + 1, true);
+      }
+      function prevSlide() {
+        if (lbIndex > 0) showSlide(lbIndex - 1, true);
+      }
+
+      // Click on card to open
+      cards.forEach((card, i) => {
+        card.querySelector('.card-visual').addEventListener('click', () => { if (!portfolioDragged) openLightbox(i); });
+        card.querySelector('.card-visual').style.cursor = 'pointer';
+      });
+
+      // Close
+      document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+      });
+
+      // Nav buttons
+      document.getElementById('lightboxNext').addEventListener('click', nextSlide);
+      document.getElementById('lightboxPrev').addEventListener('click', prevSlide);
+
+      // Mouse wheel to navigate
+      lightbox.addEventListener('wheel', e => {
+        e.preventDefault();
+        if (wheelLock) return;
+        wheelLock = true;
+        if (e.deltaY > 0 || e.deltaX > 0) nextSlide();
+        else prevSlide();
+        setTimeout(() => { wheelLock = false; }, 400);
+      }, { passive: false });
+
+      // Touch swipe in lightbox
+      let lbStartX = 0;
+      lightbox.addEventListener('touchstart', e => { lbStartX = e.touches[0].clientX; }, { passive: true });
+      lightbox.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - lbStartX;
+        if (dx < -50) nextSlide();
+        else if (dx > 50) prevSlide();
+      });
+    })();
   </script>
 </body>
 </html>
