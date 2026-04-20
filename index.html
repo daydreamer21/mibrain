@@ -452,6 +452,31 @@
       slider.addEventListener('mousemove', onMove);
       slider.addEventListener('mouseup', onEnd);
       slider.addEventListener('mouseleave', () => { if (dragging) onEnd({ clientX: startX }); });
+
+      // Trackpad horizontal scroll (two-finger swipe on Mac)
+      let wheelAccum = 0;
+      let wheelLock = false;
+      let wheelResetTimer = null;
+      const WHEEL_THRESHOLD = 60;
+      slider.addEventListener('wheel', e => {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+        e.preventDefault();
+        if (wheelLock) return;
+        wheelAccum += e.deltaX;
+        clearTimeout(wheelResetTimer);
+        wheelResetTimer = setTimeout(() => { wheelAccum = 0; }, 180);
+        if (wheelAccum > WHEEL_THRESHOLD && currentPortfolioIndex < portfolioCards.length - 1) {
+          setActivePortfolio(currentPortfolioIndex + 1, true);
+          wheelAccum = 0;
+          wheelLock = true;
+          setTimeout(() => { wheelLock = false; }, 450);
+        } else if (wheelAccum < -WHEEL_THRESHOLD && currentPortfolioIndex > 0) {
+          setActivePortfolio(currentPortfolioIndex - 1, true);
+          wheelAccum = 0;
+          wheelLock = true;
+          setTimeout(() => { wheelLock = false; }, 450);
+        }
+      }, { passive: false });
     })();
 
     // Form submission
