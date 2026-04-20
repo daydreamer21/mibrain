@@ -214,6 +214,14 @@
             <span class="form-error">— required</span>
           </div>
         </div>
+        <div class="form-consent anim-fade-up">
+          <label class="consent-label">
+            <input type="checkbox" class="consent-input" id="consentCheckbox" data-required-check />
+            <span class="consent-box" aria-hidden="true"></span>
+            <span class="consent-text">i agree with the <button type="button" class="consent-link" id="openPrivacy">privacy policy</button></span>
+          </label>
+          <span class="consent-error">— required</span>
+        </div>
         <div class="form-submit anim-fade-up">
           <button type="submit" class="submit-btn">send inquiry</button>
         </div>
@@ -264,6 +272,39 @@
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     </button>
     <div class="lightbox-hint">scroll to navigate</div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div class="modal-overlay privacy-modal-overlay" id="privacyModal">
+    <div class="modal privacy-modal">
+      <button class="privacy-modal-x" id="privacyClose" aria-label="Close">&times;</button>
+      <div class="privacy-modal-head">
+        <h3>privacy policy</h3>
+        <div class="privacy-lang" role="tablist">
+          <button type="button" class="privacy-lang-btn is-active" data-lang="en">EN</button>
+          <button type="button" class="privacy-lang-btn" data-lang="ru">RU</button>
+        </div>
+      </div>
+      <div class="privacy-modal-body" data-lang-content="en">
+        <p>This Privacy Policy describes how mibrain agency collects and uses personal data you provide through the contact form on this website.</p>
+        <p><strong>1. What we collect.</strong> Company name, email address, and the project description you submit via the contact form.</p>
+        <p><strong>2. How we use it.</strong> The data is used solely to respond to your inquiry, prepare a proposal, and communicate about the project.</p>
+        <p><strong>3. Third parties.</strong> We do not share your data with third parties, except as required by law.</p>
+        <p><strong>4. Retention.</strong> Data is stored until the communication about your request is complete or until you request deletion.</p>
+        <p><strong>5. Your rights.</strong> You can request deletion of your data at any time by contacting us via email listed in the contacts section.</p>
+        <p><strong>6. Contact.</strong> For any questions about data processing, reach out through the website form or the social links provided.</p>
+      </div>
+      <div class="privacy-modal-body" data-lang-content="ru" hidden>
+        <p>Настоящая Политика конфиденциальности регулирует порядок обработки и использования персональных данных, которые вы предоставляете при заполнении формы на сайте mibrain agency.</p>
+        <p><strong>1. Какие данные мы собираем.</strong> Имя компании, адрес электронной почты и описание задачи, которое вы указываете в форме обратной связи.</p>
+        <p><strong>2. Цели обработки.</strong> Полученные данные используются исключительно для ответа на ваш запрос, подготовки коммерческого предложения и последующей коммуникации по проекту.</p>
+        <p><strong>3. Передача третьим лицам.</strong> Мы не передаём ваши данные третьим лицам, за исключением случаев, предусмотренных законодательством.</p>
+        <p><strong>4. Сроки хранения.</strong> Данные хранятся до момента завершения коммуникации по вашему запросу либо до получения запроса на удаление.</p>
+        <p><strong>5. Ваши права.</strong> Вы можете в любой момент запросить удаление своих данных, написав нам на почту, указанную в разделе контактов.</p>
+        <p><strong>6. Контакты.</strong> По любым вопросам, связанным с обработкой персональных данных, обращайтесь через форму на сайте или указанные соцсети.</p>
+      </div>
+      <button class="modal-close" id="privacyOk">OK</button>
+    </div>
   </div>
 
   <!-- Success Modal -->
@@ -424,6 +465,12 @@
       });
     });
 
+    const consentCheckbox = document.getElementById('consentCheckbox');
+    const consentWrap = consentCheckbox.closest('.form-consent');
+    consentCheckbox.addEventListener('change', () => {
+      if (consentCheckbox.checked) consentWrap.classList.remove('has-error');
+    });
+
     form.addEventListener('submit', e => {
       e.preventDefault();
       let valid = true;
@@ -439,6 +486,12 @@
           field.classList.remove('has-error');
         }
       });
+      if (!consentCheckbox.checked) {
+        consentWrap.classList.add('has-error');
+        valid = false;
+      } else {
+        consentWrap.classList.remove('has-error');
+      }
       if (!valid) return;
       const btn = form.querySelector('.submit-btn');
       btn.textContent = 'sending...';
@@ -456,6 +509,31 @@
     });
     modal.addEventListener('click', e => {
       if (e.target === modal) modal.classList.remove('show');
+    });
+
+    // Privacy policy modal
+    const privacyModal = document.getElementById('privacyModal');
+    const openPrivacy = document.getElementById('openPrivacy');
+    const privacyClose = document.getElementById('privacyClose');
+    const privacyOk = document.getElementById('privacyOk');
+    const hidePrivacy = () => privacyModal.classList.remove('show');
+    openPrivacy.addEventListener('click', () => privacyModal.classList.add('show'));
+    privacyClose.addEventListener('click', hidePrivacy);
+    privacyOk.addEventListener('click', hidePrivacy);
+    privacyModal.addEventListener('click', e => {
+      if (e.target === privacyModal) hidePrivacy();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && privacyModal.classList.contains('show')) hidePrivacy();
+    });
+    privacyModal.querySelectorAll('.privacy-lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        privacyModal.querySelectorAll('.privacy-lang-btn').forEach(b => b.classList.toggle('is-active', b === btn));
+        privacyModal.querySelectorAll('[data-lang-content]').forEach(el => {
+          el.hidden = el.dataset.langContent !== lang;
+        });
+      });
     });
 
     // Parallax on hero background
