@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Works — MIBRAIN DESIGN</title>
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="./portfolio.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" />
+  <style>
+    @font-face {
+      font-family: "Soledago";
+      src: url("./public/fonts/Soledago.ttf");
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: "Azoft Sans";
+      src: url("./public/fonts/azoft-sans.ttf");
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: "Azoft Sans";
+      src: url("./public/fonts/azoft-sans-bold.ttf");
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="./index.html" class="nav-logo">MIBRAIN DESIGN</a>
+    <div class="nav-links">
+      <a href="./index.html#about" class="nav-link">ABOUT US</a>
+      <a href="./index.html#portfolio" class="nav-link">PORTFOLIO</a>
+      <a href="./portfolio.html" class="nav-link nav-link-works is-current">ALL WORKS ↗</a>
+      <a href="./index.html#price" class="nav-link">PRICE</a>
+      <a href="./index.html#contact" class="nav-link nav-link-cta">GET IN TOUCH</a>
+    </div>
+    <a href="./index.html#contact" class="nav-cta">get in touch →</a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pf-hero">
+    <div class="pf-hero-inner">
+      <div class="pf-hero-meta">
+        <span class="section-num">[02]</span>
+        <span class="pf-count" id="pfCount">9 projects</span>
+      </div>
+      <h1 class="pf-hero-title">ALL<br>WORKS</h1>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <div class="pf-filters-wrap">
+    <div class="pf-filters" id="pfFilters">
+      <button class="pf-tab active" data-filter="all">ALL</button>
+      <button class="pf-tab" data-filter="sites">SITES</button>
+      <button class="pf-tab" data-filter="presentations">PRESENTATIONS</button>
+      <button class="pf-tab" data-filter="branding">BRANDING</button>
+      <button class="pf-tab" data-filter="booklets">BOOKLETS</button>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <section class="pf-grid" id="pfGrid">
+
+    <div class="pf-card pf-card--wide" data-category="sites">
+      <div class="pf-card-media"></div>
+      <div class="pf-card-info">
+        <span class="pf-card-cat">SITES</span>
+        <h3 class="pf-card-title">MIBRAIN DESIGN</h3>
+        <p class="pf-card-desc">studio landing page, responsive</p>
+      </div>
+    </div>
+
+    <div class="pf-card" data-category="branding">
+      <div class="pf-card-media"></div>
+      <div class="pf-card-info">
+        <span class="pf-card-cat">BRANDING</span>
+        <h3 class="pf-card-title">COMP NAME</h3>
+        <p class="pf-card-desc">full brand identity</p>
+      </div>
+    </div>
+
+    <div class="pf-card" data-category="presentations">
+      <div class="pf-card-media"></div>
+      <div class="pf-card-info">
+        <span class="pf-card-cat">PRESENTATIONS</span>
+        <h3 class="pf-card-title">COMP NAME</h3>
+        <p class="pf-card-desc">investor pitch, 18 slides</p>
+      </div>
+    </div>
+
+    <div class="pf-card" data-category="branding">
+      <div class="pf-card-media"></div>
+      <div class="pf-card-info">
+        <span class="pf-card-cat">BRANDING</span>
+        <h3 class="pf-card-title">COMP NAME</h3>
+        <p class="pf-card-desc">logo + guidelines</p>
+      </div>
+    </div>
+
+    <div class="pf-card pf-card--wide" data-category="booklets">
+      <div class="pf-card-media"></div>
+      <div class="pf-card-info">
+        <span class="pf-card-cat">BOOKLETS</span>
+        <h3 class="pf-card-title">COMP NAME</h3>
+        <p class="pf-card-desc">product catalog, 32 pages</p>
+      </div>
+    </div>
+
+    <div class="pf-card" data-category="sites">
+      <div class="pf-card-media"></div>
+      <div class="pf-card-info">
+        <span class="pf-card-cat">SITES</span>
+        <h3 class="pf-card-title">COMP NAME</h3>
+        <p class="pf-card-desc">e-commerce redesign</p>
+      </div>
+    </div>
+
+    <div class="pf-card" data-category="presentations">
+      <div class="pf-card-media"></div>
+      <div class="pf-card-info">
+        <span class="pf-card-cat">PRESENTATIONS</span>
+        <h3 class="pf-card-title">COMP NAME</h3>
+        <p class="pf-card-desc">corporate deck, 24 slides</p>
+      </div>
+    </div>
+
+    <div class="pf-card" data-category="sites">
+      <div class="pf-card-media"></div>
+      <div class="pf-card-info">
+        <span class="pf-card-cat">SITES</span>
+        <h3 class="pf-card-title">COMP NAME</h3>
+        <p class="pf-card-desc">saas landing page</p>
+      </div>
+    </div>
+
+    <div class="pf-card" data-category="presentations">
+      <div class="pf-card-media"></div>
+      <div class="pf-card-info">
+        <span class="pf-card-cat">PRESENTATIONS</span>
+        <h3 class="pf-card-title">COMP NAME</h3>
+        <p class="pf-card-desc">sales deck, 12 slides</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <section class="footer" id="footer">
+    <div class="footer-question anim-fade-up">
+      <h2>do you have<br />any questions?</h2>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-art">
+        <img src="./resource/footer.png" alt="" class="footer-art-img" />
+      </div>
+      <div class="footer-right">
+        <div class="footer-socials">
+          <a href="#" class="social-link">TG</a>
+          <a href="#" class="social-link">VK</a>
+          <a href="#" class="social-link">TT</a>
+          <a href="#" class="social-link">BH</a>
+          <a href="#" class="social-link">DP</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>mibrain agency copyright 2026</p>
+    </div>
+  </section>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Burger
+    const burger = document.getElementById('burger');
+    burger.addEventListener('click', () => {
+      document.body.classList.toggle('menu-open');
+    });
+
+    // Close menu on nav link click
+    document.querySelectorAll('.nav-link').forEach(a => {
+      a.addEventListener('click', () => document.body.classList.remove('menu-open'));
+    });
+
+    // Footer fade-up
+    const animEls = document.querySelectorAll('.anim-fade-up');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    animEls.forEach(el => obs.observe(el));
+
+    // Filter
+    const tabs = document.querySelectorAll('.pf-tab');
+    const cards = document.querySelectorAll('.pf-card');
+    const countEl = document.getElementById('pfCount');
+    let animating = false;
+
+    function filterCards(filter) {
+      if (animating) return;
+      animating = true;
+
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.filter === filter));
+
+      // fade all out
+      cards.forEach(card => card.classList.add('pf-out'));
+
+      setTimeout(() => {
+        let shown = 0;
+        cards.forEach(card => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.style.display = match ? '' : 'none';
+          card.classList.remove('pf-out');
+          if (match) shown++;
+        });
+        countEl.textContent = shown + ' project' + (shown !== 1 ? 's' : '');
+        animating = false;
+      }, 220);
+    }
+
+    tabs.forEach(tab => tab.addEventListener('click', () => filterCards(tab.dataset.filter)));
+
+    // read filter from URL hash e.g. portfolio.html#presentations
+    const hashFilter = location.hash.replace('#', '');
+    if (hashFilter && [...tabs].some(t => t.dataset.filter === hashFilter)) {
+      filterCards(hashFilter);
+    }
+  </script>
+</body>
+</html>
