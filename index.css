@@ -348,8 +348,11 @@
     opacity: 0.4;
   }
 }
-.nav-link-works {
-  letter-spacing: 0.01em;
+.nav-arrow {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 0.85em;
 }
 .dot {
   width: 12px;
