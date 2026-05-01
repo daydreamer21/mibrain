@@ -427,16 +427,26 @@
       }
     }
 
+    // Hide track until cloning + positioning is done (prevents flash of unstyled cards)
+    track.style.opacity = '0';
+
     // Clone cards for infinite loop
     window.addEventListener('load', () => {
       const realCards = Array.from(track.querySelectorAll('.portfolio-card'));
-      // Append copies of real cards (scrolling right will enter these)
+      // Append clones at the end (right overflow)
       realCards.forEach(c => track.appendChild(c.cloneNode(true)));
-      // Prepend copies of real cards (scrolling left will enter these)
-      realCards.forEach(c => track.prepend(c.cloneNode(true)));
-      // total = 3 * REAL; real cards are at [REAL .. 2*REAL-1]
-      currentPortfolioIndex = REAL; // start at real card 0
+      // Prepend clones at the start in REVERSE order so order reads A→I before real cards
+      [...realCards].reverse().forEach(c => track.prepend(c.cloneNode(true)));
+      // Result: [I_clone..A_clone | A_real..I_real | A_clone..I_clone]
+      // Real cards sit at indices [REAL .. 2*REAL-1]
+      currentPortfolioIndex = REAL;
       setActivePortfolio(currentPortfolioIndex, false);
+      // Fade in after positioning
+      requestAnimationFrame(() => {
+        track.style.transition = 'opacity 0.3s ease';
+        track.style.opacity = '1';
+        setTimeout(() => { track.style.transition = ''; }, 350);
+      });
     });
 
     window.addEventListener('resize', () => setActivePortfolio(currentPortfolioIndex, false));
