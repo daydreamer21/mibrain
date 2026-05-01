@@ -492,27 +492,47 @@
       slider.addEventListener('mouseleave', () => { if (dragging) onEnd({ clientX: startX }); });
 
       // Trackpad horizontal scroll (two-finger swipe on Mac)
+      // Strategy: lock for 900ms after each slide change so momentum events are ignored.
+      // Also track peak deltaX — if incoming delta drops below 20% of peak, it's pure
+      // inertia from a previous gesture; reset and wait for a fresh swipe.
       let wheelAccum = 0;
       let wheelLock = false;
       let wheelResetTimer = null;
-      const WHEEL_THRESHOLD = 60;
+      let peakDeltaX = 0;
+      const WHEEL_THRESHOLD = 50;
+      const LOCK_MS = 900;
+
       slider.addEventListener('wheel', e => {
         if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
         e.preventDefault();
         if (wheelLock) return;
+
+        const absDx = Math.abs(e.deltaX);
+
+        // If deltaX fell below 15% of the peak we've seen → inertia tail, ignore
+        if (peakDeltaX > 15 && absDx < peakDeltaX * 0.15) {
+          wheelAccum = 0;
+          peakDeltaX = 0;
+          return;
+        }
+        if (absDx > peakDeltaX) peakDeltaX = absDx;
+
         wheelAccum += e.deltaX;
+
+        // Reset if gesture pauses
         clearTimeout(wheelResetTimer);
-        wheelResetTimer = setTimeout(() => { wheelAccum = 0; }, 180);
+        wheelResetTimer = setTimeout(() => { wheelAccum = 0; peakDeltaX = 0; }, 150);
+
         if (wheelAccum > WHEEL_THRESHOLD && currentPortfolioIndex < portfolioCards.length - 1) {
           setActivePortfolio(currentPortfolioIndex + 1, true);
-          wheelAccum = 0;
+          wheelAccum = 0; peakDeltaX = 0;
           wheelLock = true;
-          setTimeout(() => { wheelLock = false; }, 450);
+          setTimeout(() => { wheelAccum = 0; peakDeltaX = 0; wheelLock = false; }, LOCK_MS);
         } else if (wheelAccum < -WHEEL_THRESHOLD && currentPortfolioIndex > 0) {
           setActivePortfolio(currentPortfolioIndex - 1, true);
-          wheelAccum = 0;
+          wheelAccum = 0; peakDeltaX = 0;
           wheelLock = true;
-          setTimeout(() => { wheelLock = false; }, 450);
+          setTimeout(() => { wheelAccum = 0; peakDeltaX = 0; wheelLock = false; }, LOCK_MS);
         }
       }, { passive: false });
     })();
