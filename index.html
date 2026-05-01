@@ -629,12 +629,12 @@
         const cat = card.querySelector('.card-category span');
         const title = card.querySelector('.card-company, .card-company-lg');
         const desc = card.querySelector('.card-desc');
-        const media = card.querySelector('.card-media');
+        const img = card.querySelector('.card-media-img');
         return {
           category: cat ? cat.textContent : '',
           title: title ? title.textContent : '',
           desc: desc ? desc.textContent : '',
-          bg: media ? getComputedStyle(media).background : '#111'
+          src: img ? img.src : ''
         };
       }
 
@@ -657,7 +657,12 @@
         lbCategory.textContent = data.category;
         lbTitle.textContent = data.title;
         lbDesc.textContent = data.desc;
-        lbMedia.style.background = data.bg;
+        if (data.src) {
+          lbMedia.innerHTML = `<img src="${data.src}" alt="${data.title}" style="width:100%;height:100%;object-fit:contain;display:block;" />`;
+        } else {
+          lbMedia.innerHTML = '';
+          lbMedia.style.background = '#111';
+        }
       }
 
       function openLightbox(index) {

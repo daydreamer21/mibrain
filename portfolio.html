@@ -171,6 +171,27 @@
 
   </section>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="pfLightbox">
+    <button class="lightbox-close" id="pfLightboxClose">&times;</button>
+    <div class="lightbox-counter"><span id="pfLbCurrent">1</span> / <span id="pfLbTotal">9</span></div>
+    <div class="lightbox-content" id="pfLbContent">
+      <div class="lightbox-media" id="pfLbMedia"></div>
+      <div class="lightbox-info">
+        <span class="lightbox-category" id="pfLbCategory"></span>
+        <h3 class="lightbox-title" id="pfLbTitle"></h3>
+        <p class="lightbox-desc" id="pfLbDesc"></p>
+      </div>
+    </div>
+    <button class="lightbox-nav lightbox-prev" id="pfLbPrev">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="lightbox-nav lightbox-next" id="pfLbNext">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+    <div class="lightbox-hint">scroll to navigate</div>
+  </div>
+
   <!-- FOOTER -->
   <section class="footer" id="footer">
     <div class="footer-question anim-fade-up">
@@ -255,6 +276,114 @@
     if (hashFilter && [...tabs].some(t => t.dataset.filter === hashFilter)) {
       filterCards(hashFilter);
     }
+
+    // ── LIGHTBOX ──
+    (() => {
+      const lightbox = document.getElementById('pfLightbox');
+      const lbContent = document.getElementById('pfLbContent');
+      const lbMedia = document.getElementById('pfLbMedia');
+      const lbCategory = document.getElementById('pfLbCategory');
+      const lbTitle = document.getElementById('pfLbTitle');
+      const lbDesc = document.getElementById('pfLbDesc');
+      const lbCurrent = document.getElementById('pfLbCurrent');
+      const lbTotal = document.getElementById('pfLbTotal');
+
+      // All pf-cards (static list, ignores filter for navigation)
+      const allCards = Array.from(document.querySelectorAll('.pf-card'));
+      let lbIndex = 0;
+      let wheelLock = false;
+
+      function getVisibleCards() {
+        return allCards.filter(c => c.style.display !== 'none');
+      }
+
+      function applyData(card) {
+        const img = card.querySelector('.pf-card-img');
+        const cat = card.querySelector('.pf-card-cat');
+        const title = card.querySelector('.pf-card-title');
+        const desc = card.querySelector('.pf-card-desc');
+        lbCategory.textContent = cat ? cat.textContent : '';
+        lbTitle.textContent = title ? title.textContent : '';
+        lbDesc.textContent = desc ? desc.textContent : '';
+        if (img) {
+          lbMedia.innerHTML = `<img src="${img.src}" alt="${title ? title.textContent : ''}" style="width:100%;height:100%;object-fit:contain;display:block;" />`;
+        } else {
+          lbMedia.innerHTML = '';
+        }
+      }
+
+      function showSlide(index, animate) {
+        const visible = getVisibleCards();
+        lbIndex = Math.max(0, Math.min(index, visible.length - 1));
+        lbCurrent.textContent = lbIndex + 1;
+        lbTotal.textContent = visible.length;
+        if (animate) {
+          lbContent.classList.add('switching');
+          setTimeout(() => {
+            applyData(visible[lbIndex]);
+            lbContent.classList.remove('switching');
+          }, 200);
+        } else {
+          applyData(visible[lbIndex]);
+        }
+      }
+
+      function openLightbox(index) {
+        showSlide(index, false);
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function next() {
+        const visible = getVisibleCards();
+        if (lbIndex < visible.length - 1) showSlide(lbIndex + 1, true);
+      }
+      function prev() {
+        if (lbIndex > 0) showSlide(lbIndex - 1, true);
+      }
+
+      // Click card to open
+      allCards.forEach((card, i) => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+          const visible = getVisibleCards();
+          const visibleIndex = visible.indexOf(card);
+          if (visibleIndex !== -1) openLightbox(visibleIndex);
+        });
+      });
+
+      document.getElementById('pfLightboxClose').addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+      document.getElementById('pfLbNext').addEventListener('click', next);
+      document.getElementById('pfLbPrev').addEventListener('click', prev);
+
+      document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'ArrowLeft') prev();
+      });
+
+      lightbox.addEventListener('wheel', e => {
+        e.preventDefault();
+        if (wheelLock) return;
+        wheelLock = true;
+        if (e.deltaY > 0 || e.deltaX > 0) next(); else prev();
+        setTimeout(() => { wheelLock = false; }, 400);
+      }, { passive: false });
+
+      let lbStartX = 0;
+      lightbox.addEventListener('touchstart', e => { lbStartX = e.touches[0].clientX; }, { passive: true });
+      lightbox.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - lbStartX;
+        if (dx < -50) next(); else if (dx > 50) prev();
+      });
+    })();
   </script>
 </body>
 </html>
