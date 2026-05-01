@@ -234,7 +234,7 @@
   margin-top: 30px;
   overflow: hidden;
   position: relative;
-  height: 600px;
+  height: 560px;
 }
 .portfolio-track {
   display: flex;
@@ -349,7 +349,7 @@
 .portfolio-more {
   display: flex;
   justify-content: center;
-  padding: 20px 0 0;
+  padding: 8px 0 0;
 }
 .portfolio-more-link {
   font-family: var(--font-dm-mono);
