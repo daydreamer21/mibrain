@@ -410,15 +410,26 @@
 
     function setActivePortfolio(index, animate) {
       currentPortfolioIndex = index;
-      Array.from(track.children).forEach((c, i) => c.classList.toggle('card-main', i === index));
-      const tx = calcTranslate(index);
+      const allCards = Array.from(track.children);
+
       if (animate === false) {
+        // Kill ALL transitions before touching classes or transform
         track.style.transition = 'none';
-        track.style.transform = `translateX(${tx}px)`;
-        requestAnimationFrame(() => requestAnimationFrame(() => { track.style.transition = ''; }));
+        allCards.forEach(c => { c.style.transition = 'none'; });
+
+        allCards.forEach((c, i) => c.classList.toggle('card-main', i === index));
+        track.style.transform = `translateX(${calcTranslate(index)}px)`;
+
+        // Restore transitions after two frames (browser has painted the instant state)
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          track.style.transition = '';
+          allCards.forEach(c => { c.style.transition = ''; });
+        }));
       } else {
-        track.style.transform = `translateX(${tx}px)`;
-        // After 500ms transition, silently jump back into real zone if on a clone
+        allCards.forEach((c, i) => c.classList.toggle('card-main', i === index));
+        track.style.transform = `translateX(${calcTranslate(index)}px)`;
+
+        // After the 500ms slide transition, silently jump to real zone if on a clone
         setTimeout(() => {
           const ci = currentPortfolioIndex;
           if (ci < REAL) setActivePortfolio(ci + REAL, false);
