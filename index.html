@@ -408,9 +408,17 @@
       return sliderW / 2 - cardCenter;
     }
 
+    let _jumpListener = null; // pending transitionend jump
+
     function setActivePortfolio(index, animate) {
       currentPortfolioIndex = index;
       const allCards = Array.from(track.children);
+
+      // Cancel any pending jump from a previous animation
+      if (_jumpListener) {
+        track.removeEventListener('transitionend', _jumpListener);
+        _jumpListener = null;
+      }
 
       if (animate === false) {
         // Kill ALL transitions before touching classes or transform
@@ -429,12 +437,15 @@
         allCards.forEach((c, i) => c.classList.toggle('card-main', i === index));
         track.style.transform = `translateX(${calcTranslate(index)}px)`;
 
-        // After the 500ms slide transition, silently jump to real zone if on a clone
-        setTimeout(() => {
+        // Wait for CSS transition to ACTUALLY finish, then silently jump to real zone
+        _jumpListener = function onEnd() {
+          track.removeEventListener('transitionend', _jumpListener);
+          _jumpListener = null;
           const ci = currentPortfolioIndex;
           if (ci < REAL) setActivePortfolio(ci + REAL, false);
           else if (ci >= 2 * REAL) setActivePortfolio(ci - REAL, false);
-        }, 540);
+        };
+        track.addEventListener('transitionend', _jumpListener);
       }
     }
 
