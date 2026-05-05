@@ -925,19 +925,18 @@
   position: relative;
   height: clamp(320px, 32vw, 520px);
   overflow: hidden;
+  background: #000;
 }
 .footer-art {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 .footer-art-img {
-  width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: left top;
+  width: auto;
   display: block;
 }
 .footer-right {
