@@ -32,13 +32,12 @@
   <nav class="navbar" id="navbar">
     <div class="nav-logo">MIBRAIN DESIGN</div>
     <div class="nav-links">
-      <a href="#about" class="nav-link">ABOUT US</a>
+      <a href="#process" class="nav-link">PROCESS</a>
       <a href="#portfolio" class="nav-link">PORTFOLIO</a>
       <a href="./portfolio.html" class="nav-link nav-link-works">ALL WORKS <span class="nav-arrow">↗</span></a>
-      <a href="#price" class="nav-link">PRICE</a>
-      <a href="#contact" class="nav-link nav-link-cta">GET IN TOUCH</a>
+      <a href="#" class="nav-link nav-link-cta" id="navContact">CONTACT</a>
     </div>
-    <a href="#contact" class="nav-cta">get in touch →</a>
+    <a href="#" class="nav-cta" id="navContactDesk">contact →</a>
     <button class="burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -49,32 +48,83 @@
     <div class="hero-background">
       <img src="./resource/mibrain-back.png" alt="" class="mibrain-bg" />
     </div>
+
     <div class="hero-content">
-      <div class="hero-text anim-fade-up">
-        <span>we can do</span>
-        <span>the best design</span>
-        <span class="hero-text-last">for your company</span>
+      <div class="hero-left">
+        <h1 class="hero-headline anim-fade-up">
+          <span>ДЕЛАЕМ</span>
+          <span>ВАШУ РАБОТУ</span>
+          <span>ВИДИМОЙ.</span>
+        </h1>
+
+        <p class="hero-sub anim-fade-up">
+          Презентации, сайты и айдентика<br />для тех, кому есть что показать.
+        </p>
+
+        <div class="hero-cta-row anim-fade-up">
+          <a href="#" class="hero-cta-primary" id="heroCta" target="_blank" rel="noopener" aria-label="Обсудить проект в Telegram">
+            <svg class="hero-cta-tg-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+            </svg>
+            <span>Обсудить проект</span>
+            <span class="hero-cta-arr">→</span>
+          </a>
+        </div>
+
+        <div class="hero-contacts anim-fade-up">
+          <a href="mailto:hello@mibrain.design" class="hero-contact-link">hello@mibrain.design</a>
+          <span class="hero-contact-sep">·</span>
+          <a href="#" class="hero-contact-link">@mibrain</a>
+          <span class="hero-contact-sep">·</span>
+          <a href="tel:+70000000000" class="hero-contact-link">+7 (000) 000-00-00</a>
+        </div>
       </div>
-      <div class="hero-image anim-fade-up">
-        <img src="./resource/hero-photo.png" alt="MIBRAIN Design Studio" />
+
+      <div class="hero-right anim-fade-up">
+        <div class="hero-placeholder">
+          <div class="hero-placeholder-frame">
+            <span class="hero-placeholder-label">macbook · work preview</span>
+            <span class="hero-placeholder-meta">сюда вставим макет ноутбука с открытой работой</span>
+          </div>
+        </div>
       </div>
     </div>
-    <a href="#about" class="scroll-arrow" aria-label="Scroll down">
+
+    <a href="#process" class="scroll-arrow" aria-label="Scroll down">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
     </a>
   </section>
 
-  <!-- ABOUT US -->
-  <section class="about" id="about">
-    <div class="section-header anim-fade-up">
-      <span class="section-num">[01]</span>
-      <h2 class="section-title">ABOUT US</h2>
-    </div>
-    <div class="about-content">
-      <p class="about-text anim-fade-right">— We are a completely new web design studio with our own way of looking at familiar things</p>
-      <div class="about-principle anim-fade-up">
-        <span class="principle-label">Our principle</span>
-        <img src="./resource/design-that-really-sells.png" alt="Design that really sells" class="principle-img" />
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="process-inner">
+      <div class="section-header anim-fade-up">
+        <span class="section-num">[01]</span>
+        <h2 class="section-title">PROCESS</h2>
+        <p class="section-sub">Как устроена работа от первого письма до сдачи проекта.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step anim-fade-up">
+          <span class="process-step-num">01</span>
+          <h3 class="process-step-title">Знакомимся</h3>
+          <p class="process-step-desc">Слушаем задачу, обсуждаем цели и сроки. Никаких бриф-форм на тридцать пунктов.</p>
+        </div>
+        <div class="process-step anim-fade-up">
+          <span class="process-step-num">02</span>
+          <h3 class="process-step-title">Показываем концепт</h3>
+          <p class="process-step-desc">Два-три направления за 48 часов. Выбираете то, что ближе по духу.</p>
+        </div>
+        <div class="process-step anim-fade-up">
+          <span class="process-step-num">03</span>
+          <h3 class="process-step-title">Делаем</h3>
+          <p class="process-step-desc">Прозрачно, с обсуждением правок. Без сюрпризов и неожиданных доплат.</p>
+        </div>
+        <div class="process-step anim-fade-up">
+          <span class="process-step-num">04</span>
+          <h3 class="process-step-title">Передаём</h3>
+          <p class="process-step-desc">Финальные файлы, исходники и поддержка после сдачи.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -84,6 +134,7 @@
     <div class="section-header anim-fade-up">
       <span class="section-num">[02]</span>
       <h2 class="section-title">PORTFOLIO</h2>
+      <p class="section-sub">Реальные проекты для разных команд — от презентаций до брендов.</p>
     </div>
     <div class="portfolio-slider">
       <div class="portfolio-track" id="portfolioTrack">
@@ -153,132 +204,34 @@
       </div>
     </div>
     <div class="portfolio-more">
-      <a href="./portfolio.html" class="portfolio-more-link">view all works ↗</a>
-    </div>
-  </section>
-
-  <!-- PRICE -->
-  <section class="price-section" id="price">
-    <div class="price-wrapper">
-      <!-- HEADER: [03] PRICE — над таблицей -->
-      <div class="section-header anim-fade-up">
-        <span class="section-num">[03]</span>
-        <h2 class="section-title">PRICE</h2>
-      </div>
-      <!-- BODY: категории слева + таблица + from $250 -->
-      <div class="price-body">
-        <div class="price-categories anim-fade-up">
-          <span class="price-cat">PRESENTATIONS</span>
-          <span class="price-cat">BRANDING</span>
-          <span class="price-cat">SITES</span>
-        </div>
-        <div class="price-table anim-fade-up">
-          <div class="price-row">
-            <div class="price-row-info">
-              <h3 class="price-name">LANDING PAGE</h3>
-              <span class="price-amount">from $500</span>
-            </div>
-            <p class="price-desc">one-page website, responsive, animations</p>
-          </div>
-          <div class="price-row">
-            <div class="price-row-info">
-              <h3 class="price-name">PRESENTATION</h3>
-              <div class="price-amount-group">
-                <span class="price-amount">from $5</span>
-                <span class="price-per">per 1 slide</span>
-              </div>
-            </div>
-            <p class="price-desc">business deck, investor pitch, custom slides</p>
-          </div>
-          <div class="price-row">
-            <div class="price-row-info">
-              <h3 class="price-name">BRAND IDENTITY</h3>
-              <span class="price-amount">from $150</span>
-            </div>
-            <p class="price-desc">logo, guidelines, typography, color system</p>
-          </div>
-          <div class="price-row">
-            <div class="price-row-info">
-              <h3 class="price-name">PITCH DECK</h3>
-              <div class="price-amount-group">
-                <span class="price-amount">from $7.5</span>
-                <span class="price-per">per 1 slide</span>
-              </div>
-            </div>
-            <p class="price-desc">up to 15 slides, custom graphics</p>
-          </div>
-          <div class="price-row">
-            <div class="price-row-info">
-              <h3 class="price-name">SOCIAL MEDIA KIT</h3>
-              <span class="price-amount">from $100</span>
-            </div>
-            <p class="price-desc">templates, covers, stories, highlights</p>
-          </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT FORM -->
-  <section class="contact" id="contact">
-    <div class="contact-wrapper">
-      <h2 class="contact-title anim-fade-up">start<br />project</h2>
-      <form class="contact-form" id="contactForm" novalidate>
-        <div class="form-group anim-fade-up">
-          <label class="form-label">Company name</label>
-          <div class="form-field">
-            <input type="text" class="form-input" placeholder="your company name" data-required />
-            <span class="form-error">— required</span>
-          </div>
-        </div>
-        <div class="form-group anim-fade-up">
-          <label class="form-label">and i want to</label>
-          <div class="form-field">
-            <input type="text" class="form-input" placeholder="redesign my website, build a pitch-deck..." />
-          </div>
-        </div>
-        <div class="form-group anim-fade-up">
-          <label class="form-label">reach me at</label>
-          <div class="form-field">
-            <input type="email" class="form-input" placeholder="email@example.com" data-required data-email />
-            <span class="form-error">— required</span>
-          </div>
-        </div>
-        <div class="form-consent anim-fade-up">
-          <label class="consent-label">
-            <input type="checkbox" class="consent-input" id="consentCheckbox" data-required-check />
-            <span class="consent-box" aria-hidden="true"></span>
-            <span class="consent-text">i agree with the <button type="button" class="consent-link" id="openPrivacy">privacy policy</button></span>
-          </label>
-          <span class="consent-error">— required</span>
-        </div>
-        <div class="form-submit anim-fade-up">
-          <button type="submit" class="submit-btn">send inquiry</button>
-        </div>
-      </form>
+      <a href="./portfolio.html" class="portfolio-more-link">все работы ↗</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <section class="footer" id="footer">
     <div class="footer-question anim-fade-up">
-      <h2>do you have<br />any questions?</h2>
+      <h2>остались<br />вопросы?</h2>
     </div>
     <div class="footer-bottom">
       <div class="footer-art">
         <img src="./resource/footer.png" alt="" class="footer-art-img" />
       </div>
       <div class="footer-right">
+        <div class="footer-links">
+          <a href="./faq.html" class="footer-link">FAQ</a>
+          <a href="#" class="footer-link" id="footerContact">CONTACT</a>
+        </div>
         <div class="footer-socials">
           <a href="#" class="social-link">TG</a>
           <a href="#" class="social-link">VK</a>
-          <a href="#" class="social-link">TT</a>
           <a href="#" class="social-link">BH</a>
           <a href="#" class="social-link">DP</a>
         </div>
       </div>
     </div>
     <div class="footer-copy">
-      <p>mibrain agency copyright 2026</p>
+      <p>mibrain agency © 2026</p>
     </div>
   </section>
 
@@ -301,48 +254,6 @@
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     </button>
     <div class="lightbox-hint">scroll to navigate</div>
-  </div>
-
-  <!-- Privacy Policy Modal -->
-  <div class="modal-overlay privacy-modal-overlay" id="privacyModal">
-    <div class="modal privacy-modal">
-      <button class="privacy-modal-x" id="privacyClose" aria-label="Close">&times;</button>
-      <div class="privacy-modal-head">
-        <h3>privacy policy</h3>
-        <div class="privacy-lang" role="tablist">
-          <button type="button" class="privacy-lang-btn is-active" data-lang="en">EN</button>
-          <button type="button" class="privacy-lang-btn" data-lang="ru">RU</button>
-        </div>
-      </div>
-      <div class="privacy-modal-body" data-lang-content="en">
-        <p>This Privacy Policy describes how mibrain agency collects and uses personal data you provide through the contact form on this website.</p>
-        <p><strong>1. What we collect.</strong> Company name, email address, and the project description you submit via the contact form.</p>
-        <p><strong>2. How we use it.</strong> The data is used solely to respond to your inquiry, prepare a proposal, and communicate about the project.</p>
-        <p><strong>3. Third parties.</strong> We do not share your data with third parties, except as required by law.</p>
-        <p><strong>4. Retention.</strong> Data is stored until the communication about your request is complete or until you request deletion.</p>
-        <p><strong>5. Your rights.</strong> You can request deletion of your data at any time by contacting us via email listed in the contacts section.</p>
-        <p><strong>6. Contact.</strong> For any questions about data processing, reach out through the website form or the social links provided.</p>
-      </div>
-      <div class="privacy-modal-body" data-lang-content="ru" hidden>
-        <p>Настоящая Политика конфиденциальности регулирует порядок обработки и использования персональных данных, которые вы предоставляете при заполнении формы на сайте mibrain agency.</p>
-        <p><strong>1. Какие данные мы собираем.</strong> Имя компании, адрес электронной почты и описание задачи, которое вы указываете в форме обратной связи.</p>
-        <p><strong>2. Цели обработки.</strong> Полученные данные используются исключительно для ответа на ваш запрос, подготовки коммерческого предложения и последующей коммуникации по проекту.</p>
-        <p><strong>3. Передача третьим лицам.</strong> Мы не передаём ваши данные третьим лицам, за исключением случаев, предусмотренных законодательством.</p>
-        <p><strong>4. Сроки хранения.</strong> Данные хранятся до момента завершения коммуникации по вашему запросу либо до получения запроса на удаление.</p>
-        <p><strong>5. Ваши права.</strong> Вы можете в любой момент запросить удаление своих данных, написав нам на почту, указанную в разделе контактов.</p>
-        <p><strong>6. Контакты.</strong> По любым вопросам, связанным с обработкой персональных данных, обращайтесь через форму на сайте или указанные соцсети.</p>
-      </div>
-      <button class="modal-close" id="privacyOk">OK</button>
-    </div>
-  </div>
-
-  <!-- Success Modal -->
-  <div class="modal-overlay" id="successModal">
-    <div class="modal">
-      <h3>Thank you!</h3>
-      <p>We'll get back to you soon.</p>
-      <button class="modal-close" id="modalClose">OK</button>
-    </div>
   </div>
 
   <script>
@@ -540,86 +451,11 @@
       }, { passive: false });
     })();
 
-    // Form submission
-    const form = document.getElementById('contactForm');
-    const modal = document.getElementById('successModal');
-    const modalClose = document.getElementById('modalClose');
-
-    form.querySelectorAll('[data-required]').forEach(input => {
-      input.addEventListener('input', () => {
-        input.closest('.form-field').classList.remove('has-error');
-      });
-    });
-
-    const consentCheckbox = document.getElementById('consentCheckbox');
-    const consentWrap = consentCheckbox.closest('.form-consent');
-    consentCheckbox.addEventListener('change', () => {
-      if (consentCheckbox.checked) consentWrap.classList.remove('has-error');
-    });
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      let valid = true;
-      form.querySelectorAll('[data-required]').forEach(input => {
-        const field = input.closest('.form-field');
-        const isEmpty = !input.value.trim();
-        const isInvalidEmail = input.hasAttribute('data-email') && input.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
-        if (isEmpty || isInvalidEmail) {
-          field.classList.add('has-error');
-          field.querySelector('.form-error').textContent = isInvalidEmail ? '— invalid email' : '— required';
-          valid = false;
-        } else {
-          field.classList.remove('has-error');
-        }
-      });
-      if (!consentCheckbox.checked) {
-        consentWrap.classList.add('has-error');
-        valid = false;
-      } else {
-        consentWrap.classList.remove('has-error');
-      }
-      if (!valid) return;
-      const btn = form.querySelector('.submit-btn');
-      btn.textContent = 'sending...';
-      btn.disabled = true;
-      setTimeout(() => {
-        modal.classList.add('show');
-        form.reset();
-        btn.textContent = 'send inquiry';
-        btn.disabled = false;
-      }, 1000);
-    });
-
-    modalClose.addEventListener('click', () => {
-      modal.classList.remove('show');
-    });
-    modal.addEventListener('click', e => {
-      if (e.target === modal) modal.classList.remove('show');
-    });
-
-    // Privacy policy modal
-    const privacyModal = document.getElementById('privacyModal');
-    const openPrivacy = document.getElementById('openPrivacy');
-    const privacyClose = document.getElementById('privacyClose');
-    const privacyOk = document.getElementById('privacyOk');
-    const hidePrivacy = () => privacyModal.classList.remove('show');
-    openPrivacy.addEventListener('click', () => privacyModal.classList.add('show'));
-    privacyClose.addEventListener('click', hidePrivacy);
-    privacyOk.addEventListener('click', hidePrivacy);
-    privacyModal.addEventListener('click', e => {
-      if (e.target === privacyModal) hidePrivacy();
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && privacyModal.classList.contains('show')) hidePrivacy();
-    });
-    privacyModal.querySelectorAll('.privacy-lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        privacyModal.querySelectorAll('.privacy-lang-btn').forEach(b => b.classList.toggle('is-active', b === btn));
-        privacyModal.querySelectorAll('[data-lang-content]').forEach(el => {
-          el.hidden = el.dataset.langContent !== lang;
-        });
-      });
+    // CTA links to TG bot — placeholder URL, replace with real one
+    const TG_BOT_URL = '#'; // TODO: replace with t.me/your_bot
+    ['heroCta', 'navContact', 'navContactDesk', 'footerContact'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.setAttribute('href', TG_BOT_URL);
     });
 
     // Parallax on hero background
