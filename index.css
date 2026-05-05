@@ -925,11 +925,9 @@
   position: relative;
   height: clamp(320px, 32vw, 520px);
   overflow: hidden;
-  background-color: #000;
-  background-image: url('./resource/footer.png');
-  background-repeat: no-repeat;
-  background-position: top left;
-  background-size: auto 100%;
+  background:
+    url('./resource/footer.png') top left / auto 100% no-repeat,
+    linear-gradient(to bottom, #fff 0%, #fff 38.8%, #000 38.8%, #000 100%);
 }
 .footer-art {
   display: none;
