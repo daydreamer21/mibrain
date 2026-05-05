@@ -923,9 +923,7 @@
 }
 .footer-bottom {
   position: relative;
-  aspect-ratio: 16 / 7;
-  max-height: 520px;
-  min-height: 320px;
+  height: clamp(320px, 32vw, 520px);
   overflow: hidden;
 }
 .footer-art {
@@ -1441,7 +1439,7 @@
   .portfolio-dots { bottom: 10px; }
   .footer-question h2 { font-size: 34px; }
   .footer-question { padding: 0 24px 30px; max-width: none; }
-  .footer-bottom { aspect-ratio: 3 / 2; }
+  .footer-bottom { height: clamp(320px, 50vw, 460px); }
   .footer-socials { flex-direction: row; flex-wrap: wrap; gap: 8px; }
   .footer-right { right: 16px; bottom: 16px; }
   .social-link { font-size: 20px; }
