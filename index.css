@@ -925,22 +925,17 @@
   position: relative;
   height: clamp(320px, 32vw, 520px);
   overflow: hidden;
-  background: #000;
+  background-color: #000;
+  background-image: url('./resource/footer.png');
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-size: auto 100%;
 }
 .footer-art {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  pointer-events: none;
-  overflow: hidden;
+  display: none;
 }
 .footer-art-img {
-  height: 100%;
-  width: auto;
-  max-width: none;
-  display: block;
+  display: none;
 }
 .footer-right {
   position: absolute;
